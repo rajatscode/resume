@@ -76,7 +76,7 @@
 %%% section subheader
 \newcommand{\secsub}[1]{
     \fontsize{10pt}{11pt}
-    \fontspec[Path=resources/fonts/Oxygen/]{Oxygen-Regular}\selectfont #1
+    \fontspec[Path=resources/fonts/Oxygen/]{Oxygen-Bold}\selectfont #1
 }
 
 %%% short description
