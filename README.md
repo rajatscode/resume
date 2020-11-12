@@ -1,13 +1,34 @@
 # resume
 
+[![GitHub Release](https://img.shields.io/github/tag/rajatscode/resume.svg)](https://github.com/rajatscode/resume/releases)
+[![License](https://img.shields.io/github/license/rajatscode/resume.svg)](https://github.com/rajatscode/resume/blob/master/LICENSE)
+
 A simple, single-column XeTeX resume template with a top-down, left-right
 hierarchy
+
+## Example
+
+An example resume with can be found in
+[resume.pdf](https://github.com/rajatscode/resume/blob/master/resume.pdf). This is
+the resume generated using resume.tex.
+
+![example resume](https://github.com/rajatscode/resume/blob/master/resources/images/resume.png)
+
+## Installation
+
+Either clone the latest version of this repository or download and extract an
+archive from [releases](https://github.com/rajatscode/resume/releases).
 
 ## Usage
 
 This package provides a class file and a .tex template filled with lipsum. You
 can change the content in the template to suit your needs and/or use the class
 definition elsewhere to get similar formatting capabilities.
+
+To simply re-create the example resume:
+```
+xelatex resume.tex
+```
 
 ## Dependencies
 
