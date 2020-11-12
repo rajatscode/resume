@@ -1,4 +1,4 @@
-## Local directory (e.g., for real resume)
+## Exclude files/directory beginning with local (e.g., for real resume)
 local*
 
 ## Latexian generated files:
