@@ -1,5 +1,5 @@
 % intro options
-\ProvidesClass{resume-rajatscode}[2020/11/12 resume class]
+\ProvidesClass{rajatsresume}[2020/11/12 resume class]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
