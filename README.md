@@ -30,6 +30,9 @@ To simply re-create the example resume:
 xelatex resume.tex
 ```
 
+You can use the `webpage` branch to create a simple GitHub Pages site that
+displays your resume. For an example, see [rajatsresu.me](https://rajatsresu.me).
+
 ## Dependencies
 
 To build files using this template, you will need
