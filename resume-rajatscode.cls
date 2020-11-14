@@ -32,14 +32,14 @@
 \setmainfont[Color=primary,
              Scale=MatchLowercase,
              Ligatures=TeX,
-             Path=resources/fonts/Alegreya_Sans/,
+             Path=assets/fonts/Alegreya_Sans/,
              BoldItalicFont=AlegreyaSans-BoldItalic,
              BoldFont=AlegreyaSans-Bold,
              ItalicFont=AlegreyaSans-Italic]{AlegreyaSans-Regular}
 \setsansfont[Color=primary,
              Scale=MatchLowercase,
              Ligatures=TeX,
-             Path=resources/fonts/Oxygen/,
+             Path=assets/fonts/Oxygen/,
              BoldFont=Oxygen-Bold]{Oxygen-Light}
 
 % Commands
@@ -60,36 +60,36 @@
 %%% site
 \newcommand{\site}[3]{
     \fontsize{8pt}{9pt}
-    \fontspec[Path=resources/fonts/Alegreya_Sans/]{AlegreyaSans-Bold}\selectfont
+    \fontspec[Path=assets/fonts/Alegreya_Sans/]{AlegreyaSans-Bold}\selectfont
     \MakeUppercase{#1}
     \fontsize{10pt}{10pt}
-    \fontspec[Path=resources/fonts/Oxygen/]{Oxygen-Light}\selectfont
+    \fontspec[Path=assets/fonts/Oxygen/]{Oxygen-Light}\selectfont
     \href{#3}{#2}
 }
 
 %%% section header
 \newcommand{\sechead}[1]{
     \fontsize{10pt}{11pt}
-    \fontspec[Path=resources/fonts/Oxygen/]{Oxygen-Light}\selectfont #1
+    \fontspec[Path=assets/fonts/Oxygen/]{Oxygen-Light}\selectfont #1
 }
 
 %%% section subheader
 \newcommand{\secsub}[1]{
     \fontsize{10pt}{11pt}
-    \fontspec[Path=resources/fonts/Oxygen/]{Oxygen-Bold}\selectfont #1
+    \fontspec[Path=assets/fonts/Oxygen/]{Oxygen-Bold}\selectfont #1
 }
 
 %%% short description
 \newcommand{\shortdesc}[1]{
     \fontsize{11pt}{11pt}
-    \fontspec[Path=resources/fonts/Alegreya_Sans/]
+    \fontspec[Path=assets/fonts/Alegreya_Sans/]
     {AlegreyaSans-Regular}\selectfont{#1}
 }
 
 %%% content
 \newcommand{\content}{
     \fontsize{11pt}{11pt}
-    \fontspec[Path=resources/fonts/Alegreya_Sans/]{AlegreyaSans-Light}\selectfont
+    \fontspec[Path=assets/fonts/Alegreya_Sans/]{AlegreyaSans-Light}\selectfont
 }
 
 %% makeheader
@@ -97,7 +97,7 @@
 	\centering{
 		\color{primary}
 		\fontsize{60pt}{65pt}
-		\fontspec[Path=resources/fonts/Oxygen/]{Oxygen-Bold}\selectfont #1
+		\fontspec[Path=assets/fonts/Oxygen/]{Oxygen-Bold}\selectfont #1
         \\[0.2ex]
 	}
 }

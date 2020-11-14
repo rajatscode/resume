@@ -12,7 +12,7 @@ An example resume with can be found in
 [resume.pdf](https://github.com/rajatscode/resume/blob/master/resume.pdf). This is
 the resume generated using resume.tex.
 
-![example resume](https://github.com/rajatscode/resume/blob/master/resources/images/resume.png)
+![example resume](https://github.com/rajatscode/resume/blob/master/assets/images/resume.png)
 
 ## Installation
 
@@ -41,4 +41,4 @@ This resume template uses the
 and [Oxygen](https://fonts.google.com/specimen/Oxygen?selection.family=Oxygen)
 typefaces, redistributed under the Open Font License. A copy of the Open Font
 License (labeled 'OFL.txt') can be found within each typeface's directory in
-the /resources/fonts subdirectory.
+the /assets/fonts subdirectory.
