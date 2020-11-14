@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/"
   to = "/resume.pdf"
-  status = 301
+  status = 200
   force = false
