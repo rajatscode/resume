@@ -2,6 +2,7 @@
 
 [![GitHub Release](https://img.shields.io/github/tag/rajatscode/resume.svg)](https://github.com/rajatscode/resume/releases)
 [![License](https://img.shields.io/github/license/rajatscode/resume.svg)](https://github.com/rajatscode/resume/blob/master/LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d7d2d4a6-243c-49f5-b13d-836a40424989/deploy-status)](https://app.netlify.com/sites/friendly-hoover-2dadc8/deploys)
 
 A simple, single-column XeTeX resume template with a top-down, left-right
 hierarchy
