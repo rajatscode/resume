@@ -11,7 +11,8 @@ hierarchy
 
 An example resume with can be found in
 [resume.pdf](https://github.com/rajatscode/resume/blob/master/resume.pdf). This is
-the resume generated using resume.tex.
+the resume generated using
+[resume.tex](https://github.com/rajatscode/resume/blog/master/resume.tex).
 
 ![example resume](https://github.com/rajatscode/resume/blob/master/assets/images/resume.png)
 
