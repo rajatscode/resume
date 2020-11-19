@@ -1,7 +1,7 @@
 # resume
 
 [![GitHub Release](https://img.shields.io/github/tag/rajatscode/resume.svg)](https://github.com/rajatscode/resume/releases)
-[![License](https://img.shields.io/github/license/rajatscode/resume.svg)](https://github.com/rajatscode/resume/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/rajatscode/resume.svg)](https://github.com/rajatscode/resume/blob/main/LICENSE)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d7d2d4a6-243c-49f5-b13d-836a40424989/deploy-status)](https://app.netlify.com/sites/friendly-hoover-2dadc8/deploys)
 
 A simple, single-column XeTeX resume template with a top-down, left-right
@@ -10,11 +10,11 @@ hierarchy
 ## Example
 
 An example resume with can be found in
-[resume.pdf](https://github.com/rajatscode/resume/blob/master/resume.pdf). This is
+[resume.pdf](https://github.com/rajatscode/resume/blob/main/resume.pdf). This is
 the resume generated using
-[resume.tex](https://github.com/rajatscode/resume/blog/master/resume.tex).
+[resume.tex](https://github.com/rajatscode/resume/blog/main/resume.tex).
 
-![example resume](https://github.com/rajatscode/resume/blob/master/assets/images/resume.png)
+![example resume](https://github.com/rajatscode/resume/blob/main/assets/images/resume.png)
 
 ## Installation
 
