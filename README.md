@@ -32,6 +32,11 @@ To simply re-create the example resume:
 xelatex resume.tex
 ```
 
+or, alternatively, to also set metadata based on Makefile options:
+```
+make build
+```
+
 You can use the `webpage` branch to create a simple
 [Netlify](https://netlify.com) site that displays your resume. For an example,
 see [rajatsresu.me](https://rajatsresu.me).

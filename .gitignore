@@ -1,6 +1,9 @@
 ## Exclude files/directory beginning with local (e.g., for real resume)
 local*
 
+## Exclude exiftool artifacts
+*_original
+
 ## Latexian generated files:
 TWSLatexianTemp*
 
