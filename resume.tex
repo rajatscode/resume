@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% resume - one page, one column
+% XeLaTeX Template
+% Version 1.0 (11.12.2020)
+%
+% Author: rajatscode (https://github.com/rajatscode)
+%
+% Repository: https://github.com/rajatscode/resume
+%
+% This template is primarily designed for
+% Sofware Engineers or others applying for
+% industry roles in software engineering
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{rajatsresume}
+ 
+\begin{document}
+
+%%%%%%%%%
+% HEADER
+%%%%%%%%%
+
+% \makeheader{title/name}
+\makeheader{Rajat Mehndiratta}
+
+%%%%%%%%%%%%
+% SUBHEADER
+%%%%%%%%%%%%
+
+% argument to environment should match number of sites
+\begin{subheader}{1}
+    % leave third argument empty to specify no hyperlink
+    \site{GitHub}{rajatscode}{https://github.com/rajatscode}
+    \site{LinkedIn}{/in/rajatsprofile}{https://linkedin.com/in/rajatsprofile}
+    \site{Website}{rajats.site}{https://rajats.site}
+    \site{E-Mail}{r@jats.email}{mailto:r@jats.email}
+    \site{Latest Resume}{rajatsresu.me}{https://rajatsresu.me}\\
+\end{subheader}
+
+%%%%%%%%%
+% SKILLS
+%%%%%%%%%
+\begin{topic}{Skills}
+    % \skillset{category}{members}
+    \skillset{Languages}{Python, OCaml, Java, Rust, Go, Swift, TypeScript}
+    \skillset{Tools}{git, Google Sheets, Mongo, React, SwiftUI,
+        {\fontfamily{cmr}\selectfont \LaTeX}}
+    \\ % hardcoded due to entry spacing
+\end{topic}
+
+%%%%%%%%%%%%%
+% EXPERIENCE
+%%%%%%%%%%%%%
+\begin{topic}{Experience}
+    % \entry{role}{dates}{team/company}{description}
+    \entry{Software Engineer}{April 2023 - October 2024}
+    {Jane Street Capital > Options Desk > Proprietary Trading System Development}
+    {Collaborated with traders in fast-paced environment to
+     provide liquidity across multiple markets.\\
+     + Collaborated on greenfield expansion into new index and equity options.\\
+     + Led infrastructure migration and quality of life efforts with impact across multiple trading systems.\\
+     + Owned several proprietary functionalities and built new model training tooling.}
+    \entry{Software Engineer}{August 2021 - February 2023}
+    {Plaid > Internal Platform > Core Services > Abstractions}
+    {Prioritized correctness, reliability, and velocity in data modeling and
+     storage for core systems in Go.\\
+    + Owned project to resolve scaling limit, extending company storage runway
+      from 2022Q1 to late 2020's.\\
+    + Built verification to help detect and manage 100MM's of
+      obsolete user connections, mitigating regulatory and security risk
+      while increasing internal observability around sensitive user data.\\
+    + Led component efforts for infrastructure cost reduction (\$45k/mo) and
+      incident response speedup.}
+    \entry{Software Engineer}{June 2019 - July 2021}
+    {Google > Tech Infra > Unified Fulfillment Optimization > Fleet Transformation}
+    {Enhanced Java backend for mixed-integer programming solver microservice to
+     plan datacenters, focused on reducing lead time variance and increasing
+     ganularity and touchlessness of planning.\\
+     + Launched recurring automated jobs to detect and re-plan no-longer-viable
+       hardware deployments.\\
+     + Designed and delivered API to plan with counterfactuals, increasing
+       on-time fulfillment and reducing need for manual monitoring and
+       intervention in hardware planning and deployment.}
+    \entry{Software Development Enginer Intern}{May - August 2018}
+    {Amazon > Supply Chain Optimization Technologies > Topline Forecasting}
+    {Investigated and demonstrated serverless solutions to reduce forecasting
+    compute costs by 10-100x.\\
+    + Designed and implemented Python workflow orchestrator to operate serverless
+      forecasting on AWS.}
+    \entry{Software Development Enginer Intern}{May - August 2017}
+    {Amazon > Worldwide Operations > Robotics}
+    {Validated deep reinforcement learning for visual navigation in sidewalk delivery (Amazon Scout).\\
+     + Drove effort to generate training data from realistic commercial virtual 3D environments.}
+\end{topic}
+
+%%%%%%%%%%%%
+% EDUCATION
+%%%%%%%%%%%%
+\begin{topic}{Education}
+    % \entry{institution}{dates}{subtitle}{description}
+    \entry{Carnegie Mellon University}{May 2019}
+    {Bachelor of Science, Electrical and Computer Engineering}
+    {Coursework: Advanced Mobile Robot Development (16-865), Advanced Digital
+     Signal Processing (18-792), Introduction to Machine Learning (10-601),
+     Rapid Protoyping of Computer Systems (18-540), Introduction to Computer
+     Architecture (18-447), Natural Language Processing (11-411), Neural
+     Technology: Sensing \& Stimulation (18-412), Logic Design and Verification
+     (18-341)\\
+     Involvements: hackathons (competitor, mentor, organizer, and sponsor),
+     Mock Trial (Captain), SDC Buggy (carbon-fiber gravity racing; Mechanic),
+     End The Rain (umbrella dispensers; Co-Founder, Tech Lead)}
+\end{topic}
+
+%%%%%%%%%%%
+% PROJECTS
+%%%%%%%%%%%
+\begin{topic}{Projects}
+    % \entry{name}{dates}{tools used}{description}
+    \entry{SCOT-T Lunar Rover (16-865 / CMU+Astrobotic Lunar X Prize Entry)}{January - May 2016}
+    {Engineer on Communications, Hardware, and UI Teams}
+    {Worked on development and testing of UDP-based communications for novel
+     4.5kg Cube Rover standard.}
+    \entry{FifthSense (PennApps Fall 2015 Grand Prize)}{September 6-8, 2015}
+    {Hackathon Competitor}
+    {Built full-duplex handheld design to allow blind users to access
+     smartphones while moving around.}
+\end{topic}
+
+\end{document}
