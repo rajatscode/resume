@@ -1,6 +1,6 @@
 % intro options
-\ProvidesClass{rajatsresume}[2020/11/12 resume class]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{rajatsresume}[2020/11/12 resume class]
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{article}
@@ -9,22 +9,24 @@
 \LoadClass{article}
 \pagenumbering{gobble}
 
-% Page geometry
+% Package loading
 \usepackage[hmargin=0.5in, vmargin=0.5in]{geometry}
-\usepackage{verbatim} % to enable multiline comments
+\usepackage{verbatim}
 \usepackage[hidelinks]{hyperref}
-
-% Modern color support (removed obsolete usenames/dvipsnames)
 \usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{fontspec}
+\usepackage{lastpage}
+\usepackage{ifthen}
+\usepackage{refcount}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage{xspace}
+
+% Color definitions
 \definecolor{primary}{HTML}{000000}
 
-% Typography enhancements
-\usepackage{microtype}
-
-% Set main fonts - DEFINE ONCE, USE MANY TIMES
-\usepackage{fontspec}
-
-% Define font families (loaded once, not on every command call)
+% Font family definitions
 \newfontfamily\headerfont[
     Path=assets/fonts/Oxygen/,
     BoldFont=Oxygen-Bold
@@ -65,7 +67,7 @@
     BoldFont=Oxygen-Bold
 ]{Oxygen-Light}
 
-% Spacing parameters (no more magic numbers!)
+% Spacing parameters
 \setlength{\topsep}{0pt}
 \setlength{\partopsep}{0pt}
 \setlength{\parskip}{0pt}
@@ -90,15 +92,11 @@
 \newlength{\topicendspace}
 \setlength{\topicendspace}{6.5ex}
 
-% Dynamic header sizing - user can override with \setHeaderSize{size}
+% Dynamic header sizing
 \newlength{\headersize}
 \setlength{\headersize}{60pt}
 
-\newcommand{\setHeaderSize}[1]{%
-    \setlength{\headersize}{#1}%
-}
-
-% Semantic font commands (efficient - no repeated fontspec calls!)
+% Semantic font commands
 \newcommand{\usesitelabelfont}{%
     \fontsize{8pt}{9pt}\alegreyaboldfont\selectfont%
 }
@@ -127,14 +125,6 @@
     \fontsize{\headersize}{\dimexpr\headersize+5pt}\headerfont\selectfont%
 }
 
-% LaTeX logo in document font (no more font family hacks in content!)
-\newcommand{\doctex}{\LaTeX\xspace}
-
-% Modern list-based layout (replacing archaic tabbing environment)
-\usepackage{enumitem}
-\usepackage{calc}
-\usepackage{xspace}
-
 % Custom list for entries
 \newlist{resumelist}{description}{1}
 \setlist[resumelist]{
@@ -158,7 +148,12 @@
         \PackageError{rajatsresume}{Site value (second argument) cannot be empty}{}%
     \fi%
     \usesitelabelfont\MakeUppercase{#1}~%
-    \usesitevaluefont\href{#3}{#2}%
+    \usesitevaluefont%
+    \if\relax\detokenize{#3}\relax%
+        #2%
+    \else%
+        \href{#3}{#2}%
+    \fi%
 }
 
 %% makeheader - main name header with dynamic sizing
@@ -230,13 +225,14 @@
 }
 
 % Automatic one-page fitting system
-% Uses lastpage package to detect overflow and auto-adjust header size
-\usepackage{lastpage}
-\usepackage{ifthen}
 
 % Minimum header size (safety bound)
 \newlength{\minheadersize}
 \setlength{\minheadersize}{25pt}
+
+% Maximum resize attempts
+\newcounter{maxresizecount}
+\setcounter{maxresizecount}{10}
 
 % Create a flag to track if we've had overflow
 \newif\ifhadoverflow
@@ -248,44 +244,47 @@
 
 % At end of document, check if we had more than one page
 \AtEndDocument{%
-    \ifthenelse{\pageref{LastPage}>1}{%
-        % Check if we're below minimum size
-        \ifdim\headersize<\minheadersize%
+    \ifnum\getpagerefnumber{LastPage}>1\relax%
+        % Check for maximum iterations exceeded
+        \ifnum\value{resizecount}>\value{maxresizecount}\relax%
             \PackageError{rajatsresume}{%
-                Header size reached minimum (\the\minheadersize) but content still
-                overflows to \pageref{LastPage} pages.\MessageBreak
-                Your resume has too much content to fit on one page.\MessageBreak
-                Please remove some entries or reduce descriptions%
+                Auto-resize failed after \the\value{resizecount} attempts.\MessageBreak
+                Content cannot fit on one page.\MessageBreak
+                Manually reduce content or increase text compaction%
             }{Remove content to fit on one page}%
         \else%
-            % Write a flag to aux file indicating overflow
-            \immediate\write\@auxout{%
-                \string\global\string\hadoverflowtrue%
-            }%
-            \immediate\write\@auxout{%
-                \string\stepcounter{resizecount}%
-            }%
-            % Improved warning with actionable guidance
-            \PackageWarning{rajatsresume}{%
-                Document overflowed to \pageref{LastPage} pages
-                (\number\numexpr\pageref{LastPage}-1\relax\space over target).\MessageBreak
-                Auto-adjusting header size from \the\headersize\space
-                (minimum: \the\minheadersize).\MessageBreak
-                Recompile 2-3 more times until this message disappears.\MessageBreak
-                If problem persists after 5 compilations, reduce content%
-            }%
+            % Check if we're below minimum size
+            \ifdim\headersize<\dimexpr\minheadersize+1pt\relax%
+                \PackageError{rajatsresume}{%
+                    Header size reached minimum (\the\minheadersize) but content still
+                    overflows to \getpagerefnumber{LastPage} pages.\MessageBreak
+                    Your resume has too much content to fit on one page.\MessageBreak
+                    Please remove some entries or reduce descriptions%
+                }{Remove content to fit on one page}%
+            \else%
+                % Write flags to aux file indicating overflow
+                \immediate\write\@auxout{\noexpand\hadoverflowtrue}%
+                \immediate\write\@auxout{\noexpand\stepcounter{resizecount}}%
+                % Warning with actionable guidance
+                \PackageWarning{rajatsresume}{%
+                    Document overflowed to \getpagerefnumber{LastPage} pages
+                    (\number\numexpr\getpagerefnumber{LastPage}-1\relax\space over target).\MessageBreak
+                    Auto-adjusting header size from \the\headersize\space
+                    (minimum: \the\minheadersize).\MessageBreak
+                    Recompile 2-3 more times until this message disappears.\MessageBreak
+                    If problem persists after 5 compilations, reduce content%
+                }%
+            \fi%
         \fi%
-    }{%
+    \else%
         % Single page - success!
-        \immediate\write\@auxout{%
-            \string\global\string\hadoverflowfalse%
-        }%
-        \ifnum\value{resizecount}>0%
+        \immediate\write\@auxout{\noexpand\hadoverflowfalse}%
+        \ifnum\value{resizecount}>0\relax%
             \PackageInfo{rajatsresume}{%
                 Success! Resume fits on one page at header size \the\headersize%
             }%
         \fi%
-    }%
+    \fi%
 }
 
 % At beginning of document, adjust header size if needed
@@ -299,7 +298,7 @@
                 Remove some entries or reduce text%
             }{Remove content to fit on one page}%
         \else%
-            % Reduce header size by 10% on each iteration
+            % Reduce by 10% per iteration (empirically chosen for fast convergence)
             \setlength{\headersize}{0.9\headersize}%
             \PackageInfo{rajatsresume}{%
                 Auto-resize attempt \number\value{resizecount}:
@@ -310,15 +309,25 @@
     \fi%
 }
 
-% Command to manually reset header size if user wants to start over
+% Command to manually reset header size
 \newcommand{\resetheadersize}{%
     \setlength{\headersize}{60pt}%
-    \global\hadoverflowfalse%
+    \hadoverflowfalse%
     \setcounter{resizecount}{0}%
 }
 
-% Command to manually set header size
+% Command to manually set header size with validation
 \newcommand{\setheadersize}[1]{%
+    \setlength{\@tempdima}{#1}%
+    \ifdim\@tempdima<\minheadersize%
+        \PackageError{rajatsresume}{%
+            Header size #1 is below minimum \the\minheadersize%
+        }{Use a header size of at least \the\minheadersize}%
+    \else\ifdim\@tempdima>100pt\relax%
+        \PackageWarning{rajatsresume}{%
+            Header size #1 is very large and may cause overflow%
+        }%
+    \fi\fi%
     \setlength{\headersize}{#1}%
 }
 
